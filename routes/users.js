@@ -1,6 +1,6 @@
 import express from "express";
 
-import {registerUser,reqparams,reqquery,specialStatic,updateUser,deleteUser } from "../controllers/users.js";
+import {getAllUser, getUserDetail, login, registerUser } from "../controllers/users.js";
 
 
 const router = express.Router();
@@ -8,19 +8,14 @@ const router = express.Router();
 
 router.post("/new",registerUser);
 
-// using queries 
-router.get("/all",reqquery);
 
-router.get("/name/special",specialStatic);
+router.get("/all",getAllUser);
 
-//using params , dynamic route should be kept at last or atleast lower than static routes 
+router.post("/login",login);
 
-router.route("/name/:uName").get(reqparams).put(updateUser).delete(deleteUser);
-// router.get("/name/:uName",reqparams);
 
-// router.put("/name/:uName",updateUser);
+router.route("/name/:id").get(getUserDetail);
 
-// router.delete("/name/:uName",deleteUser);
 
 
 export default router ;
