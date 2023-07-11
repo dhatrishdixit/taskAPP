@@ -20,8 +20,8 @@ export const registerUser = async (req,res)=>{
          email ,
          password:hashedPassword,
     });
-
-    sendCookie(user,"registered successfully",201,res);}
+    
+    sendCookie(user,res,"registered successfully",201);}
     catch(err){
         next(err);
     }
@@ -49,7 +49,7 @@ export const login = async (req,res,next) =>{
         })
     }
 
-    sendCookie(user,`welcome back, ${user.name}`,201,res);}
+    sendCookie(user,res,`welcome back, ${user.name}`,201);}
     catch(err){
         next(err);
     }
@@ -70,6 +70,8 @@ export const logout = (req,res) => {
     
     res.status(200).cookie("token","",{
         expires: new Date(Date.now()),
+        sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+        secure: process.env.NODE_ENV === "Development" ? false : true,
     }).json({
         success:true,
         message:"logout successfull",

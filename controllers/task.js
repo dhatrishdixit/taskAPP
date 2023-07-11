@@ -42,7 +42,7 @@ export const updateTask = async (req,res,next) => {
     if(!task){
         return res.status(404).json({
             success:false,
-            message:"task doesnt exist"
+            message:"task doesn't exist"
         })
     }
  
