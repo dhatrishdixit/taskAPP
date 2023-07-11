@@ -1,6 +1,7 @@
 import express from "express";
 
-import {getAllUser, getUserDetail, login, registerUser } from "../controllers/users.js";
+import { getMyProfile, login, logout, registerUser } from "../controllers/users.js";
+import { isAuthenticated } from "../middlewares/auth.js";
 
 
 const router = express.Router();
@@ -9,12 +10,12 @@ const router = express.Router();
 router.post("/new",registerUser);
 
 
-router.get("/all",getAllUser);
+// router.get("/all",getAllUser);
 
 router.post("/login",login);
+router.get("/logout",logout);
 
-
-router.route("/name/:id").get(getUserDetail);
+router.get("/me",isAuthenticated,getMyProfile);
 
 
 

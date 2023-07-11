@@ -1,6 +1,6 @@
 import mongoose, { mongo } from "mongoose";
 
-const Schema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
     title:{
         type:String,
         // unique:true,
@@ -26,4 +26,4 @@ const Schema = new mongoose.Schema({
     }
 })
 
-export const Task = mongoose.model("Task",schema);
+export const Task = mongoose.model("Task",taskSchema);
