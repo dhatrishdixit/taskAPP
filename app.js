@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(
     cors({
       // origin: [process.env.FRONTEND_URL],
-      origin:"*",
+      origin:"https://melodic-monstera-9fa78a.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })
